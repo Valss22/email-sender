@@ -20,7 +20,6 @@ venv
 docs.zip
 archive.zip
 db.sqlite3
-app/db.sqlite3
-app/db.sqlite3-shm
-app/db.sqlite3-wal
+db.sqlite3-shm
+db.sqlite3-wal
 
