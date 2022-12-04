@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-from .user.graphql.query import graphql_app
+from .users.graphql.query import graphql_app
 
 app = FastAPI()
 
