@@ -1,5 +1,8 @@
 import strawberry
 from strawberry.asgi import GraphQL
+from graphql_template.users.services import create_user
+from graphql_template.users.schemas import UserCreate
+from graphql_template.db import get_db
 
 
 @strawberry.type
@@ -9,11 +12,11 @@ class User:
 
 
 @strawberry.type
-class Query:
+class UserMutation:
     @strawberry.field
-    def user(self) -> User:
-        return User("Vlad", 20)
+    async def create_user(self) -> None:
+        pass
 
 
-schema = strawberry.Schema(Query)
+schema = strawberry.Schema(UserMutation)
 graphql_app = GraphQL(schema)
