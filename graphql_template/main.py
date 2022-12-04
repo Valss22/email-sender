@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 from tortoise.contrib.fastapi import register_tortoise
-from app.user.graphql.query import graphql_app
+from .user.graphql.query import graphql_app
 
 app = FastAPI()
 
@@ -21,7 +21,7 @@ app.add_websocket_route("/graphql", graphql_app)
 register_tortoise(
     app,
     db_url="sqlite://db.sqlite3",
-    modules={"models": ["app.user.model"]},
+    modules={"models": ["graphql_template.user.model"]},
     generate_schemas=False,
     add_exception_handlers=True,
 )
