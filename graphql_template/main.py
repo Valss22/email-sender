@@ -14,5 +14,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.on_event("startup")
+def init_db_models():
+    from .db import metadata
+    from .db import engine
+
+    metadata.create_all(engine)
+
+
 app.include_router(user_graphql_router, prefix="/graphql")
 app.add_websocket_route("/graphql", user_graphql_router)
