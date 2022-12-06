@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-from .users.graphql.query import graphql_app
+from .users.graphql.query import user_graphql_router
 
 app = FastAPI()
 
@@ -14,5 +14,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(graphql_app, prefix="/graphql")
-app.add_websocket_route("/graphql", graphql_app)
+app.include_router(user_graphql_router, prefix="/graphql")
+app.add_websocket_route("/graphql", user_graphql_router)

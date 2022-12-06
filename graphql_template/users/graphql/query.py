@@ -21,5 +21,5 @@ class UserMutation:
         return None
 
 
-schema = strawberry.Schema(UserMutation)
-graphql_app = GraphQLRouter(schema, context_getter=get_db_contex)
+user_schema = strawberry.Schema(UserMutation)
+user_graphql_router = GraphQLRouter(user_schema, context_getter=get_db_contex)
