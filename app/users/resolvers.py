@@ -11,7 +11,6 @@ class UserMutation:
     @strawberry.mutation
     async def create_user(self, user: UserIn, info: Info) -> None:
         await services.create_user(user, info.context["db"])
-        return None
 
 
 @strawberry.type

@@ -1,4 +1,3 @@
-from pydantic import BaseModel
 import strawberry
 
 
@@ -11,10 +10,5 @@ class UserIn:
 @strawberry.type
 class UserOut:
     id: int
-    name: str
-    age: int
-
-
-class UserCreate(BaseModel):
     name: str
     age: int

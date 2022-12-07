@@ -1,12 +1,11 @@
 from app.users.model import users
-from app.users.schemas import UserCreate
 from databases import Database
+from app.users.schemas import UserOut
 
 
 async def create_user(user, db: Database) -> None:
-    print(user)
-    # user_query = users.insert().values(name=name, age=age)
-    # await db.execute(user_query)
+    user_query = users.insert().values(name=user.name, age=user.age)
+    await db.execute(user_query)
     return None
 
 
