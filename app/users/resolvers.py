@@ -16,6 +16,10 @@ class UserMutation:
 @strawberry.type
 class UserQuery:
     @strawberry.field
+    async def get_user_by_id(self, id: int, info: Info) -> UserOut:
+        return await services.get_user_by_id(id, info.context["db"])
+
+    @strawberry.field
     async def get_users_list(self, info: Info) -> list[UserOut]:
         return await services.get_users_list(info.context["db"])
 

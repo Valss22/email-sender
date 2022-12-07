@@ -9,6 +9,11 @@ async def create_user(user, db: Database) -> None:
     return None
 
 
+async def get_user_by_id(id: int, db: Database) -> UserOut:
+    user_query = users.select().where(users.c.id == id)
+    return await db.fetch_one(user_query)
+
+
 async def get_users_list(db: Database):
     users_query = users.select()
     return await db.fetch_all(users_query)
