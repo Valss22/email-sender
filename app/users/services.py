@@ -1,7 +1,7 @@
-from graphql_template.users.model import users
-from graphql_template.users.schemas import UserCreate
+from app.users.model import users
+from app.users.schemas import UserCreate
 from databases import Database
-from graphql_template.utils import nonblock
+from app.utils import nonblock
 
 
 async def create_user(user: UserCreate, db: Database) -> None:

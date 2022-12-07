@@ -1,5 +1,5 @@
 import sqlalchemy
-from graphql_template.db import metadata
+from app.db import metadata
 
 users = sqlalchemy.Table(
     "users",

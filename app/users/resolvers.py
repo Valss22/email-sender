@@ -1,15 +1,10 @@
 import strawberry
 from strawberry.fastapi import GraphQLRouter
 from strawberry.types import Info
-from graphql_template.users.services import create_user, get_users_list
-from graphql_template.users.schemas import UserCreate
-from graphql_template.dependencies import get_db_contex
-
-
-@strawberry.type
-class User:
-    name: str
-    age: int
+from app.users.services import create_user, get_users_list
+from app.users.schemas import UserCreate
+from app.dependencies import get_db_contex
+from app.users.schemas import User
 
 
 @strawberry.type
