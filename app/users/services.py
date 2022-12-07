@@ -1,12 +1,12 @@
 from app.users.model import users
 from app.users.schemas import UserCreate
 from databases import Database
-from app.utils import nonblock
 
 
-async def create_user(user: UserCreate, db: Database) -> None:
-    user_query = users.insert().values(name=user.name)
-    nonblock(db.execute, user_query)
+async def create_user(user, db: Database) -> None:
+    print(user)
+    # user_query = users.insert().values(name=name, age=age)
+    # await db.execute(user_query)
     return None
 
 
