@@ -15,6 +15,12 @@ async def update_user(user: UpdateUserIn, db: Database) -> None:
     return None
 
 
+async def delete_user(id: int, db: Database) -> None:
+    user_query = users.delete().where(users.c.id == id)
+    await db.execute(user_query)
+    return None
+
+
 async def get_user_by_id(id: int, db: Database) -> UserOut:
     user_query = users.select().where(users.c.id == id)
     return await db.fetch_one(user_query)

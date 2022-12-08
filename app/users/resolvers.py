@@ -16,6 +16,10 @@ class UserMutation:
     async def update_user(self, user: UpdateUserIn, info: Info) -> None:
         await services.update_user(user, info.context["db"])
 
+    @strawberry.mutation
+    async def delete_user(self, id: int, info: Info) -> None:
+        await services.delete_user(id, info.context["db"])
+
 
 @strawberry.type
 class UserQuery:
