@@ -2,18 +2,16 @@ import strawberry
 
 
 @strawberry.input
-class CreateUserIn:
+class CreateUser:
     name: str
     age: int
 
 
 @strawberry.input
-class UpdateUserIn(CreateUserIn):
+class UpdateUser(CreateUser):
     id: int
 
 
 @strawberry.type
-class UserOut:
-    id: int
-    name: str
-    age: int
+class GetUser(UpdateUser):
+    pass
