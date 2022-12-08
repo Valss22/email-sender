@@ -3,14 +3,18 @@ from strawberry.fastapi import GraphQLRouter
 from strawberry.types import Info
 from app.users import services
 from app.dependencies import get_db_contex
-from app.users.schemas import UserIn, UserOut
+from app.users.schemas import CreateUserIn, UpdateUserIn, UserOut
 
 
 @strawberry.type
 class UserMutation:
     @strawberry.mutation
-    async def create_user(self, user: UserIn, info: Info) -> None:
+    async def create_user(self, user: CreateUserIn, info: Info) -> None:
         await services.create_user(user, info.context["db"])
+
+    @strawberry.mutation
+    async def update_user(self, user: UpdateUserIn, info: Info) -> None:
+        await services.update_user(user, info.context["db"])
 
 
 @strawberry.type

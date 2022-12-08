@@ -2,9 +2,14 @@ import strawberry
 
 
 @strawberry.input
-class UserIn:
+class CreateUserIn:
     name: str
     age: int
+
+
+@strawberry.input
+class UpdateUserIn(CreateUserIn):
+    id: int
 
 
 @strawberry.type
