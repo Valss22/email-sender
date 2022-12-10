@@ -1,6 +1,6 @@
 from app.users.model import users
 from databases import Database
-from app.users.schemas import GetUser, CreateUser, UpdateUser
+from app.users.schemas import User, CreateUser, UpdateUser
 
 
 async def create_user(user: CreateUser, db: Database) -> None:
@@ -21,7 +21,7 @@ async def delete_user(id: int, db: Database) -> None:
     return None
 
 
-async def get_user_by_id(id: int, db: Database) -> GetUser:
+async def get_user_by_id(id: int, db: Database) -> User:
     user_query = users.select().where(users.c.id == id)
     return await db.fetch_one(user_query)
 

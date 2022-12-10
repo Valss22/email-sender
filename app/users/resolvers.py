@@ -3,7 +3,7 @@ from strawberry.fastapi import GraphQLRouter
 from strawberry.types import Info
 from app.users import services
 from app.dependencies import get_db_contex
-from app.users.schemas import CreateUser, UpdateUser, GetUser
+from app.users.schemas import CreateUser, UpdateUser, User
 
 
 @strawberry.type
@@ -24,11 +24,11 @@ class UserMutation:
 @strawberry.type
 class UserQuery:
     @strawberry.field
-    async def get_user_by_id(self, id: int, info: Info) -> GetUser:
+    async def get_user_by_id(self, id: int, info: Info) -> User:
         return await services.get_user_by_id(id, info.context["db"])
 
     @strawberry.field
-    async def get_users_list(self, info: Info) -> list[GetUser]:
+    async def get_users_list(self, info: Info) -> list[User]:
         return await services.get_users_list(info.context["db"])
 
 

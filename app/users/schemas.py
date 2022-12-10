@@ -1,4 +1,5 @@
 import strawberry
+from typing import Optional
 
 
 @strawberry.input
@@ -8,10 +9,12 @@ class CreateUser:
 
 
 @strawberry.input
-class UpdateUser(CreateUser):
+class UpdateUser:
     id: int
+    name: Optional[str] = None
+    age: Optional[int] = None
 
 
 @strawberry.type
-class GetUser(UpdateUser):
-    pass
+class User(CreateUser):
+    id: int
