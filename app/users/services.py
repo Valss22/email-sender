@@ -1,6 +1,7 @@
 from app.users.model import users
 from databases import Database
 from app.users.schemas import User, CreateUser, UpdateUser
+from dataclasses import asdict
 
 
 async def create_user(user: CreateUser, db: Database) -> None:
@@ -10,7 +11,10 @@ async def create_user(user: CreateUser, db: Database) -> None:
 
 
 async def update_user(user: UpdateUser, db: Database) -> None:
-    user_query = users.update().where(users.c.id == user.id).values(**user.__dict__)
+    user_dict = asdict(
+        user, dict_factory=lambda x: {k: v for (k, v) in x if v is not None}
+    )
+    user_query = users.update().where(users.c.id == user.id).values(**user_dict)
     await db.execute(user_query)
     return None
 
